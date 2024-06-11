@@ -37,17 +37,17 @@ footer{
 header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  height: 10%;
+  height: 0;
 }
 
 main {
   position: absolute;
-  top: 10%;
   left: 12%;
-  height: 90%;
+  height: 100%;
   width: 88%;
   background-color: var(--web-gray);
   box-sizing: border-box; 
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .block-content{
@@ -60,13 +60,13 @@ main {
 
 .side-menu{
   position: absolute;
-  top: 10%;
   left: 0;
   background-color: var(--blue);
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   width: 12%;
+  justify-content: space-between;
 }
 
 .right-border {
@@ -76,6 +76,7 @@ main {
   top: 10%;
   height: 90%;
   background-color: var(--blue);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 1%;
 }
 
@@ -83,7 +84,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: left;
-  gap: 1rem;
   color: white;
   width: 100%;
 }
@@ -109,10 +109,9 @@ main {
 
 .base-login {
   display: flex;
-  flex-direction: row-reverse;
-  margin-right: 1rem;
+  flex-direction: column-reverse;
   cursor: default;
-  align-items: center;
+  align-items: left;
   color: white;
 }
 

@@ -21,7 +21,7 @@ Home Page
         </div>     
         <div class="home-sensor-container">
             <img src="{{url_for('static', filename='img/vibrate.svg')}}">
-            <p id="humidity">{{ values.Humidity or 'Vibration: Not found.' }}</p>
+            <p id="humidity">{{ values.Vibration or 'Vibration: Not found.' }}</p>
         </div>
       </div>
       {% endif %}

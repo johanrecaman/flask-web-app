@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 import threading
 import requests
 from datetime import date
-from model.models import db, LogTemperature, LogHumidity, LogActuator
+from model.models import db, LogTemperature, LogHumidity, LogActuator, LogVibration
 
 from model.models import db, Sensor, Actuator
 from blueprints.sensor import read_sensors
@@ -12,7 +12,7 @@ from blueprints.user import is_admin, is_statistician, is_operator
 
 kits = Blueprint("kits", __name__, static_folder="static", template_folder="view")
 
-values = {"Temperature": None, "Humidity": None}
+values = {"Temperature": None, "Humidity": None, "Vibration": None}
 messages = []
 
 def on_message(client, userdata, message):
@@ -24,6 +24,7 @@ def message_webhook():
 
     old_temperature = values["Temperature"]
     old_humidity = values["Humidity"]
+    old_vibration = values["Vibration"]
     
     payload = request.data.decode()
     if "Temperature" in payload:
@@ -32,8 +33,9 @@ def message_webhook():
             messages.insert(0, payload)
 
             temp = float(payload.split(":")[1])
-            if temp > 50:
-                temp_log = LogTemperature(value=temp, timestamp=date.today())
+            name = payload.split(":")[0]
+            if temp < 10:
+                temp_log = LogTemperature(name=name, value=temp, timestamp=date.today())
                 db.session.add(temp_log)
                 db.session.commit()
 
@@ -42,11 +44,24 @@ def message_webhook():
             values["Humidity"] = payload
             messages.insert(0, payload)
 
+            name = payload.split(":")[0]
             humidity = float(payload.split(":")[1])
-            if humidity > 80:
-                hum_log = LogHumidity(value=humidity, timestamp=date.today())
+            if humidity > 50:
+                hum_log = LogHumidity(name=name,value=humidity, timestamp=date.today())
                 db.session.add(hum_log)
                 db.session.commit()
+    elif "Vibration" in payload:
+        if old_vibration != payload:
+            values["Vibration"] = payload
+            messages.insert(0, payload)
+
+            name = payload.split(":")[0]
+            vibration = float(payload.split(":")[1])
+            if vibration > 1:
+                vib_log = LogVibration(name=name,value=vibration, timestamp=date.today())
+                db.session.add(vib_log)
+                db.session.commit()
+
     return render_template("kits.html", values = values, messages=messages, is_admin=is_admin(), is_statistician=is_statistician(), is_operator=is_operator())
 
 client = mqtt.Client()
