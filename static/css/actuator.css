@@ -1,145 +1,55 @@
 :root {
-    --gray: #1f2937;
-    --light-gray: #e2e8f0;
-    --medium-gray: #374151;
-  
+    --gray: #3b82f6;
+    --light-gray: --web-grat;
+    --medium-gray: #3F8CFF;
+
+    --blue: #3b82f6;
+    --light-blue: #3F8CFF;
+    --azure: #eff4f8;
+    --black: #000000;
     font-family: "Roboto", sans-serif;
 }
 
 h2{
-    margin: 0;
-    font-size: 1.8rem;
-    color: var(--medium-gray);
+        margin: 0;
+        font-size: 1.8rem;
+        color: var(--light-blue);
 }
 
 table{
-    width: 100%;
-    border-collapse: collapse;
+        width: 100%;
+        border-collapse: collapse;
 }
 
 
-.main{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 35%;
-    height: 35%;
-    gap: 1rem;
-}
-
-.actuator-create-container,
-.actuator-view-container{
-    display: flex;
-    width: 100%;
-    min-height: 100%;
-    padding: 3rem;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    border-radius: 1rem;
-    border: 0.1rem solid var(--medium-gray);
-}
-
-.actuator-create-container{
-    justify-content: center;
-    gap: 0.2rem;
-}
-
-.actuator-label, .actuator-input{
-    width: 70%;
-}
-
-.actuator-input{
-    padding: 0.7rem;
-    border: 0.1rem solid var(--medium-gray);
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.actuator-button{
-    padding: 1rem;
-    width: 50%;
-    background-color: var(--gray);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-}
-.actuator-button:hover{
-    background-color: var(--medium-gray);
-    cursor: pointer;
-}
-
-.actuator-view-container{
-    justify-content: top;
-    overflow: auto;
-    padding: 3rem;
-}
-
-.actuator-table-header{
-    justify-content: space-between;
-    background-color: var(--gray);
-    color: white;
-    width: 100%;
-    padding: 0.5rem;
-    text-align: left;
-}
-
-.actuator-table-data{
-    padding: 0.5rem;
-    border-bottom: 0.1rem solid var(--medium-gray);
-    text-align: left;
-}
 
 .left{
-    text-align: left;
+        text-align: left;
 }
 
-.actuator-table-data:nth-child(odd){
-    background-color: white;
-}
 
-.actuator-table-data:last-child{
-    border-bottom: none;
-}
-
-.actuator-delete-button{
-    background-color: var(--gray);
-    color: white;
-    border: none;
-    padding: 0.7rem;
-    border-radius: 0.5rem;
-}
 
 .actuator-delete-button:hover{
-    background-color: var(--medium-gray);
-    cursor: pointer;
+        background-color: var(--light-blue);
+        cursor: pointer;
 }
 
 ::-webkit-scrollbar {
-    width: 12px; 
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--light-gray);
-    border-radius: 10px; 
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--gray);
-    border-radius: 10px; 
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--medium-gray);
-  }
+        width: 12px; 
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--web-gray);
+        border-radius: 10px; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--blue);
+        border-radius: 10px; 
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--light-blue);
+        cursor: pointer;
+    }

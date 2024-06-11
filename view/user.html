@@ -5,85 +5,95 @@ User Page
 {% endblock %}
 
 {% block content %}
-    <div class="user-container">
-            <div class="create-user-container">
+<div class="container">
+    <div class="inside-container">
+        <h1>User Manager</h1>
+        <div class="user-container">
+            <div class="section create-user-section">
+                <h3>Create User</h3>
                 <form action="/create_user" method="POST" class="create-user-form">
-                    <div class="create-user-input-container">
+                    <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required placeholder="Email">
                     </div>
-                    <div class="create-user-input-container">
+                    <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" required placeholder="Password">
                     </div>
-                    <div class="create-user-input-container">
+                    <div class="form-group">
                         <label for="role">Select a role:</label>
                         <select id="role" name="role">
-                            <option value="admin">Admin</option>
-                            <option value="operator">Operator</option>
-                            <option value="statistician">Statistician</option>
+                            <option class="option" value="admin">Admin</option>
+                            <option class="option" value="operator">Operator</option>
+                            <option class="option" value="statistician">Statistician</option>
                         </select>
                     </div>
-                
                     <button type="submit">Create</button>
                 </form>
             </div>
-            <div class="user-list-container">
-                <div class="view-user-container">
-                    <table>
-                        <tr>
-                            <th class="user-id">User ID</th>
-                            <th class="user-email">Email</th>
-                            <th class="user-action">Action</th>
-                        </tr>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.email }}</td>
-                        <td>
-                            <form action="/delete_user/{{user.id}}" method="POST">
-                            <button type="submit">Delete</button>
-                            </form>
-                        </td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% for category, message in messages %}
-                        {% if category == 'error' %}
-                            <span class="alert alert-error">{{ message }}</span>
-                        {% endif %}
-                    {% endfor %}
-                {% endwith %}
-            </div>
-            <div class="create-user-container">
+        
+            <div class="section edit-user-section">
+                <h3>Edit User</h3>
                 <form action="/edit_user" method="POST" class="edit-user-form">
-                    <div class="input-container">
+                    <div class="form-group">
                         <label for="edit_user_id">User ID:</label>
-                        <input type="text" id="edit_user_id" name="edit_user_id" required>
+                        <input type="text" id="edit_user_id" name="edit_user_id" required placeholder="Id">
                         {% with messages = get_flashed_messages(with_categories=true) %}
-                            {% for category, message in messages %}
-                                {% if category == 'warning' %}
-                                    <span class="alert alert-error">{{ message }}</span>
-                                {% endif %}
-                            {% endfor %}
+                        {% for category, message in messages %}
+                        {% if category == 'warning' %}
+                        <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
                         {% endwith %}
                     </div>
-                    
-                    <div class="input-container">
+                    <div class="form-group">
                         <label for="new_email">New Email:</label>
-                        <input type="email" id="new_email" name="new_email">
+                        <input type="email" id="new_email" name="new_email" placeholder="Email">
                     </div>
-                
-                    <div class="input-container">
+                    <div class="form-group">
                         <label for="new_password">New Password:</label>
-                        <input type="password" id="new_password" name="new_password">
+                        <input type="password" id="new_password" name="new_password" placeholder="Password">
                     </div>
                     <button type="submit">Update</button>
                 </form>
             </div>
-    
+        </div>
+        <div class="section user-list-section">
+            <div class="view-user-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.role }}</td>
+                            <td>
+                                <form action="/delete_user/{{ user.id }}" method="POST">
+                                    <button type="submit" class="delete-button">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </div>
     </div>
 
+</div>
 {% endblock %}

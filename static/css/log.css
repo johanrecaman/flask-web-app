@@ -1,0 +1,108 @@
+:root {
+  --gray: #1f2937;
+  --light-gray: #e2e8f0;
+  --medium-gray: #374151;
+
+  --blue: #3b82f6;
+  --light-blue: #3F8CFF;
+  --azure: #eff4f8;
+  --black: #000000;
+  font-family: "Roboto", sans-serif;
+}
+
+.date-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.date-container h1{
+  align-self: flex-start;
+  margin-left: 3rem;
+}
+.form-container {
+  position: relative;
+  display: flex;
+  align-items: left;
+  gap: 1rem;
+  width: 95%;
+}
+
+.form-container button {
+  align-self: flex-end;
+  min-height: 3.4rem;
+  padding: 1rem;
+  width: 10%;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+}
+
+.form-container button:hover {
+  background-color: var(--light-blue);
+  cursor: pointer;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-gray);
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+input[type="date"]:focus {
+  border-color: var(--blue);
+  outline: none;
+}
+
+.sensor-data-container{
+  background-color: white;
+  display: flex;
+  padding-top: 1rem;
+  align-items: center;
+  flex-direction: column;
+  min-height: 55%;
+  max-height: 56%;
+  border-radius: 0.2rem;
+  border: 0.0625rem solid var(--border-gray);
+  gap: 1rem;
+  width: 95%;
+  overflow-y: auto;
+}
+
+.sensor-data-row{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sensor-data-row td{
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gray);
+}

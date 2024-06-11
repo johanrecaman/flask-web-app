@@ -16,8 +16,7 @@
   <body>
     <header>
       <div class="logo-container">
-        <img src="{{url_for('static', filename='img/logo.svg')}}">
-        <p>Logo</p>
+        <p>QuietQuake</p>
       </div>
       <div class='base-login'>
           {% if session.get('user')%}
@@ -41,14 +40,10 @@
               <img src="{{url_for('static', filename='img/home.svg')}}">
               <p>Home</p>
           </a>
-          <a href="/sensor" class="base-menu-option">
-              <img src="{{url_for('static', filename='img/sensor.svg')}}">
-              <p>Sensors</p>
-          </a>
-          <a href="/actuator" class="base-menu-option">
-              <img src="{{url_for('static', filename='img/actuator.svg')}}">
-              <p>Actuators</p>
-          </a>
+         <a href="/kits" class="base-menu-option">
+              <img src="{{url_for('static', filename='img/home.svg')}}">
+              <p>Dashboard</p>
+          </a> 
           <a href="/log" class="base-menu-option">
               <img src="{{url_for('static', filename='img/sensor.svg')}}">
               <p>Logs</p>

@@ -13,19 +13,29 @@ class Sensor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     value = db.Column(db.Integer, nullable=False)
+    type = db.Column(db.String(80), nullable=False)
 
 class Actuator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     value = db.Column(db.Integer, nullable=False)
+    type = db.Column(db.String(80), nullable=False)
+
+class LogVibration(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+    value = db.Column(db.Float, nullable=False)
+    timestamp = db.Column(db.Date, nullable=False)
 
 class LogTemperature(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
     value = db.Column(db.Float, nullable=False)
     timestamp = db.Column(db.Date, nullable=False)
 
 class LogHumidity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
     value = db.Column(db.Float, nullable=False)
     timestamp = db.Column(db.Date, nullable=False)
 

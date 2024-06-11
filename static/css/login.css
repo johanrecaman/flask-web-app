@@ -1,21 +1,25 @@
 :root {
-  --shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   --gray: #1f2937;
   --light-gray: #e2e8f0;
   --medium-gray: #374151;
-}
 
+  --blue: #3b82f6;
+  --light-blue: #3F8CFF;
+  --azure: #eff4f8;
+  --black: #000000;
+  font-family: "Roboto", sans-serif;
+}
 .login-main {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
 }
 
 .login-main h1 {
-  color: var(--medium-gray);
+  color: var(--light-blue);
   display: flex;
   padding: 0;
   margin: 0;
@@ -23,11 +27,11 @@
 }
 
 .login-container {
-  padding: 20px 50px;
+  padding: 2rem;
   background-color: white;
   border-radius: 10px;
-  border: 2px solid var(--medium-gray);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--border-gray);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-form {
@@ -35,41 +39,53 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 2rem;
+}
+
+.login-form h1{
+  align-self: flex-start;
+  color: var(--black);
 }
 
 .login-input {
-  gap: 5px;
+  gap: 0.3rem;
   display: flex;
   flex-direction: column;
   align-items: start;
 }
 
 .login-input input {
-  width: 300px;
-  height: 40px;
+  width: 20rem;
+  height: 3rem;
   font-size: 20px;
-  border: 1px solid var(--gray);
+  border: none;
+  border-radius: 0.2rem;
+  background-color: var(--web-gray);
+}
+
+.login-input input:focus {
+  outline: none;
+  border: 1px solid var(--light-blue);
 }
 
 .login-submit {
-  width: 250px;
-  height: 50px;
+  width: 100%;
+  height: 3rem;
   font-size: 15px;
-  border-radius: 10px;
-  background-color: var(--gray);
+  border-radius: 0.2rem;
+  background-color: var(--light-blue);
   color: white;
-  border: 1px solid;
+  border: none;
 }
 
 .login-submit:hover {
-  background-color: var(--medium-gray);
+  background-color: var(--light-gray);
 }
 
 .login-input p {
   margin: 0;
   padding: 0;
-  color: var(--medium-gray);
+  color: var(--black);
 }
 
 .login-error-container {

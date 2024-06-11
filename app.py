@@ -1,8 +1,10 @@
 import os
 from flask import Flask
 from flask_migrate import Migrate
-from model.models import db
+from model.models import db, LogActuator, LogHumidity, LogTemperature, LogVibration
 from blueprints import kits, login, actuator, sensor, user, log, home
+from werkzeug.security import generate_password_hash
+from datetime import date
 
 
 app = Flask(__name__, template_folder="view")

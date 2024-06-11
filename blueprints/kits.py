@@ -6,6 +6,8 @@ from datetime import date
 from model.models import db, LogTemperature, LogHumidity, LogActuator
 
 from model.models import db, Sensor, Actuator
+from blueprints.sensor import read_sensors
+from blueprints.actuator import read_actuators
 from blueprints.user import is_admin, is_statistician, is_operator 
 
 kits = Blueprint("kits", __name__, static_folder="static", template_folder="view")
@@ -53,7 +55,6 @@ client.connect("broker.mqttdashboard.com")
 client.subscribe("flask-web-app-send")
 threading.Thread(target=client.loop_forever).start()
 
-@kits.route("/", methods=["GET", "POST"])
 @kits.route("/kits", methods=["GET", "POST"])
 def kits_blueprint():
     if request.method == "POST":
@@ -64,7 +65,7 @@ def kits_blueprint():
     if "user" not in session:
         return redirect("/login")
 
-    return render_template("kits.html", values = values, messages=messages, is_admin=is_admin(), is_statistician=is_statistician(), is_operator=is_operator())
+    return render_template("kits.html", values = values, messages=messages, is_admin=is_admin(),is_statistician=is_statistician(), is_operator=is_operator(), sensors = read_sensors(), actuators = read_actuators())
 
 
 @kits.route("create_kit", methods=["POST"])
@@ -77,9 +78,9 @@ def create_kit():
     type = request.form.get("type")
 
     if type == "Sensor":
-        new_kit = Sensor(name = name, value = value)
+        new_kit = Sensor(name = name, value = value, type = type)
     else:
-        new_kit = Actuator(name = name, value = value)
+        new_kit = Actuator(name = name, value = value, type = type)
     db.session.add(new_kit)
     db.session.commit()
 

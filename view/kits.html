@@ -4,7 +4,7 @@ Home Page
 {% endblock %}
 {% block content %}
 <div class="title-container">
-  <span>Dashboard</span>
+  <span id="super-title">Dashboard</span>
 </div>
 <div class="home-container">
   <div class="home-module">
@@ -15,10 +15,14 @@ Home Page
             <img src="{{url_for('static', filename='img/temperature.svg')}}">
             <p id="temperature">{{ values.Temperature or 'Temperature: Not found.' }}</p>
         </div>     
-        <div class="home-sensor-container">
+        <div class="home-sensor-container first-element">
             <img src="{{url_for('static', filename='img/humidity.svg')}}">
             <p id="humidity">{{ values.Humidity or 'Humidity: Not found.' }}</p>
         </div>     
+        <div class="home-sensor-container">
+            <img src="{{url_for('static', filename='img/humidity.svg')}}">
+            <p id="humidity">{{ values.Humidity or 'Vibration: Not found.' }}</p>
+        </div>
       </div>
       {% endif %}
     </div>
@@ -26,7 +30,7 @@ Home Page
     <div class="module-container">
       {% if is_admin or is_operator %}
         <form method="POST" class="home-form">
-          <p>Input your command:</p>
+          <p>Input your command</p>
           <input class="home-input" type="text" name="command" placeholder=" e.g turn on light">
           <input type="submit" class="home-button">
         </form>
@@ -36,17 +40,20 @@ Home Page
   <div class="home-module">
     <div class="module-container">
         <form action="/create_kit" method="post" class="kit-create-container">
-            <label for="name" class="sensor-label">Name:</label>
-            <input type="text" id="name" name="name" placeholder="e.g temperature" required class="sensor-input"><br>
 
-            <select name="type" id="type" class="sensor-select">
-              <option value="temperature">Sensor</option>
-              <option value="humidity">Actuator</option>
-            </select>
+          <label for="name" class="sensor-label">Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g temperature" required class="sensor-input"><br>
+          
+          <label for="value" class="sensor-label">Value</label>
+          <input type="number" id="value" name="value" placeholder="25" required class="sensor-input"><br>
+          
+          <div class="type-checkbox">
+            <input type="checkbox" id="sensor" name="type" value="Sensor">
+            <label for="sensor">Sensor</label><br>
+            <input type="checkbox" id="actuator" name="type" value="Actuator">
+            <label for="actuator">Actuator</label>
+          </div>
 
-            <label for="value" class="sensor-label">Value:</label>
-            <input type="number" id="value" name="value" placeholder="25" required class="sensor-input"><br>
-            
             <button type="submit" class="sensor-button">Register</button>
         </form>
     </div>
@@ -56,12 +63,32 @@ Home Page
           <tr>
             <th class="sensor-table-header left">Name</th>
             <th class="sensor-table-header">Value</th>
+            <th class="sensor-table-header">Type</th>
             <th class="sensor-table-header">Action</th>
           </tr>
+          {%if is_operator or is_admin%}
+          {% for actuator in actuators %}
+          <tr>
+            <td class="sensor-table-data left">{{ actuator.name }}</td>
+            <td class="sensor-table-data">{{ actuator.value }}</td>
+            <td class = "sensor-table-data">{{ actuator.type }}</td>
+            <td class="sensor-table-data">
+                {% if session.get('role') == "admin" %}
+                <form action="/delete_actuator/{{actuator.id}}" method="POST">
+                  <button type="submit" class="sensor-delete-button">Delete</button>
+                </form>
+                {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+          {%endif%}
+
+          {%if is_statistician or is_admin%}
           {% for sensor in sensors %}
           <tr>
             <td class="sensor-table-data left">{{ sensor.name }}</td>
             <td class="sensor-table-data">{{ sensor.value }}</td>
+            <td class="sensor-table-data">{{ sensor.type }}</td>
             <td class="sensor-table-data">
                 {% if session.get('role') == "admin" %}
                 <form action="/delete_sensor/{{sensor.id}}" method="POST">
@@ -70,7 +97,8 @@ Home Page
                 {% endif %}
             </td>
           </tr>
-            {% endfor %}
+          {% endfor %}
+          {%endif%}
         </table>
         </div>
   </div>
