@@ -41,11 +41,11 @@
               <p>Home</p>
           </a>
          <a href="/kits" class="base-menu-option">
-              <img src="{{url_for('static', filename='img/home.svg')}}">
+              <img src="{{url_for('static', filename='img/dashboard.svg')}}">
               <p>Dashboard</p>
           </a> 
           <a href="/log" class="base-menu-option">
-              <img src="{{url_for('static', filename='img/sensor.svg')}}">
+              <img src="{{url_for('static', filename='img/history.svg')}}">
               <p>Logs</p>
           </a>
           {% if session.get('role') == 'admin' %}

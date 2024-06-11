@@ -23,14 +23,14 @@ body {
 header,
 footer {
   display: flex;
-  background-color: var(--black);
+  background-color: var(--blue);
 }
 
 footer{
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: var(--black);
+  background-color: var(--blue);
   height: 1rem;
 }
 
@@ -62,7 +62,7 @@ main {
   position: absolute;
   top: 10%;
   left: 0;
-  background-color: var(--black);
+  background-color: var(--blue);
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ main {
   z-index: 1;
   top: 10%;
   height: 90%;
-  background-color: var(--black);
+  background-color: var(--blue);
   width: 1%;
 }
 

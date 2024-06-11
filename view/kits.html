@@ -12,7 +12,7 @@ Home Page
       {% if is_admin or is_statistician%}
       <div class="home-sensors">
         <div class="home-sensor-container first-element">
-            <img src="{{url_for('static', filename='img/temperature.svg')}}">
+            <img src="{{url_for('static', filename='img/temp.svg')}}">
             <p id="temperature">{{ values.Temperature or 'Temperature: Not found.' }}</p>
         </div>     
         <div class="home-sensor-container first-element">
@@ -20,7 +20,7 @@ Home Page
             <p id="humidity">{{ values.Humidity or 'Humidity: Not found.' }}</p>
         </div>     
         <div class="home-sensor-container">
-            <img src="{{url_for('static', filename='img/humidity.svg')}}">
+            <img src="{{url_for('static', filename='img/vibrate.svg')}}">
             <p id="humidity">{{ values.Humidity or 'Vibration: Not found.' }}</p>
         </div>
       </div>

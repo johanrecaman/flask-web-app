@@ -80,6 +80,7 @@
 
 .login-submit:hover {
   background-color: var(--light-gray);
+  cursor: pointer;
 }
 
 .login-input p {
