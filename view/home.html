@@ -3,47 +3,28 @@
 Home Page
 {% endblock %}
 {% block content %}
-<div class="home-container">
-  <div class="content-container">
-    <div class="module-container">
-      {% if is_admin or is_operator %}
-      <h1>Send</h1>
-      <div class="home-send">
-        <form method="POST" class="home-form">
-          <p>Input your command:</p>
-          <input class="home-input" type="text" name="command" placeholder=" e.g turn on light">
-          <input type="submit" class="home-button">
-        </form>
+<div class="container">
+    <div class="title-container">
+      <h2 id="title">QuietQuake</h2>
+      <span class="subtitle">Integração de sensores de temperatura, umidade e vibração, além de atuadores como buzzer e LEDs, para fornecer alertas sobre mudanças ambientais críticas.</span>
+      <div class="btn-container">
+        <button>teste</button>
+        <a href="">explore</a>
       </div>
-      {% endif %}
     </div>
-    <div class="module-container">
-      {% if is_admin or is_statistician%}
-      <h1>Sensors</h1>
-      <div class="home-sensors">
-        <div class="home-sensor-container first-element">
-            <img src="{{url_for('static', filename='img/temperature.svg')}}">
-            <p id="temperature">{{ values.Temperature or 'Temperature: Not found.' }}</p>
-        </div>     
-        <div class="home-sensor-container">
-            <img src="{{url_for('static', filename='img/humidity.svg')}}">
-            <p id="humidity">{{ values.Humidity or 'Humidity: Not found.' }}</p>
-        </div>     
+    <div class="icons-container">
+      <div class="icon">
+        <img src="{{url_for('static', filename='img/fire.svg')}}">
+        <span>Fique um passo à frente do fogo: sistema de aviso de incêndios que salva vidas!</span>
       </div>
-      {% endif %}
-    </div>
-  </div>
-  <div class="content-container">
-    {% if is_admin or is_statistician %}
-    <h1>Receive</h1>
-    <div class="home-receive" id="messages">
-      {% for message in messages %}
-      <div class="home-receive-message">
-        <p>{{message}}</p>
+      <div class="icon">
+        <img src="{{url_for('static', filename='img/flood.svg')}}">
+         <span>Prevenção é a chave: receba alertas de enchentes e mantenha-se seguro!</span>
       </div>
-      {% endfor %}
+      <div class="icon">
+        <img src="{{url_for('static', filename='img/earthquake.svg')}}">
+         <span>Desastres sob controle: sistema de alerta que salva vidas e previne tragédias!</span>
+      </div>
     </div>
-    {% endif %}
-  </div>
 </div>
 {% endblock %}

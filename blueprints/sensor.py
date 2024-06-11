@@ -17,10 +17,9 @@ def create_sensor():
         session.clear()
         return redirect("/home")
     name = request.form.get("name")
-    type = request.form.get("type")
     value = request.form.get("value")
 
-    new_sensor = Sensor(name = name, type = type, value = value)
+    new_sensor = Sensor(name = name, value = value)
     db.session.add(new_sensor)
     db.session.commit()
 

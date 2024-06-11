@@ -1,145 +1,99 @@
 :root {
-  --gray: #1f2937;
-  --light-gray: #e2e8f0;
-  --medium-gray: #374151;
-  --shadow: rgba(0, 0, 0, 0.35) 0rem 0.3125rem 0.9375rem;
+    --gray: #1f2937;
+    --light-gray: #e2e8f0;
+    --medium-gray: #374151;
+    --shadow: rgba(0, 0, 0, 0.35) 0rem 0.3125rem 0.9375rem;
 
-  font-family: "Roboto", sans-serif;
-}
-
-.home-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    font-family: "Roboto", sans-serif;
 }
 
-.content-container {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  height: 90%;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7rem;
 }
 
-.module-container{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+.title-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
 }
 
-.content-container h1 {
-  margin: 0;
-  padding: 0;
-  color: var(--medium-gray);
+.title-container span{
+    font-size: 1rem;
+    text-align: center;
 }
 
-.home-receive {
-  background-color: white;
-  width: 80%;
-  height: 80%;
-  border-radius: 1rem;
-  border: 0.0625rem solid var(--medium-gray);
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+.title-container h2{
+    text-align: center;
+    font-size: 4rem;
 }
 
-.home-receive-message {
-  width: 100%;
-  height: 2.5rem;
-  background-color: var(--light-gray);
-  border-radius: 0.625rem;
-  box-shadow: rgba(0, 0, 0, 0.15) 0.121875rem 0.121875rem 0.1625rem;
-  border: 0.0625rem solid var(--medium-gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.subtitle{
+    width: 50%;
 }
 
-.home-send {
-  background-color: white;
-  width: 80%;
-  height: 100%;
-  border-radius: 0.625rem;
-  border: 0.0625rem solid var(--medium-gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.btn-container{
+    display: flex;
 }
 
-.home-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.3125rem;
+.btn-container button{
+    padding: 1rem;
+    width: 10rem;
+    text-align: center;
+    background-color: var(--light-gray);
+    border: 1px solid var(--medium-gray);
+    border-radius: 0.2rem;
+    font-size: 1rem;
 }
 
-.home-form p {
-  padding: 0;
-  margin: 0;
+.btn-container button:hover{
+    background-color: var(--medium-gray);
+    color: white;
+    cursor: pointer;
 }
 
-.home-input {
-  width: 25rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  border: 0.0625rem solid var(--medium-gray);
-  font-size: 1.25rem;
+.btn-container a{
+    padding: 1rem;
+    width: 10rem;
+    text-align: center;
+    background-color: var(--light-gray);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor:pointer;
+    text-decoration: none;
+    color: var(--medium-gray);
+
 }
 
-.home-button {
-  width: 25.5rem;
-  height: 3.125rem;
-  background-color: var(--gray);
-  border-radius: 0.625rem;
-  border: 0.0625rem solid var(--medium-gray);
-  color: white;
-  font-size: 1.25rem;
+.icons-container{
+    display: flex;
+    width: 50%;
+    gap: 1rem;
 }
 
-.home-button:hover {
-  background-color: var(--medium-gray);
-  cursor: pointer;
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
 }
 
-.home-sensors {
-  background-color: white;
-  width: 80%;
-  height: 100%;
-  border-radius: 0.625rem;
-  border: 0.0625rem solid var(--medium-gray);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.icon img{
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
-.home-sensor-container {
-  width: 25rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: flex-start;
+.icon span{
+    font-size: 0.8rem;
+    text-align: center;
 }
 
-.first-element {
-  border-bottom: 0.0625rem solid var(--gray);
-}
-
-.home-sensor-container p {
-  font-size: 1.5rem;
-  color: var(--medium-gray);
-}
-.home-sensor-container img {
-  width: 1.7rem;
-}
