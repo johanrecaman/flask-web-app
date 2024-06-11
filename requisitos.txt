@@ -1,3 +1,0 @@
-- Mais modelos (1 pra cada sensor/atuador)
-    -implementar modelos 
-- Implementar novo sensor
