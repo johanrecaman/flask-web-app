@@ -26,7 +26,7 @@ def read_logs():
 
     log_actuator = LogActuator.query.filter(LogActuator.timestamp >= start_date, LogActuator.timestamp <= end_date).all()
 
-    return render_template('log.html', sensor_data_temp=logs_temp, sensor_data_hum=logs_hum, log_vib=logs_vib, actuator_data=log_actuator, is_admin=session.get("role") == "admin", is_statistician=session.get("role") == "statistician", is_operator=session.get("role") == "operator")
+    return render_template('log.html', sensor_data_temp=logs_temp, sensor_data_hum=logs_hum, sensor_data_vib=logs_vib, actuator_data=log_actuator, is_admin=session.get("role") == "admin", is_statistician=session.get("role") == "statistician", is_operator=session.get("role") == "operator")
 
 @log.route('/delete_log_temp/<int:log_id>', methods=['POST'])
 def delete_logs(log_id):
