@@ -2,20 +2,17 @@
 {%block title%} Login Page{%endblock%}
 {%block content%}
 <div class="login-main">
-  <h1>Welcome!</h1>
-  <div class="login-warning-container">
-      <p>Log in to have access to the site.</p>
-  </div>
   <div class="login-container">
     <form method="post" class="login-form">
+      <h1>Welcome back!</h1>
 
       <div class="login-input">
-        <p>Your email:</p>
-        <input type="text" name="email" required placeholder="e.g john@gmail.com">
+        <p>Email</p>
+        <input type="text" name="email" required placeholder="you@example.com">
       </div>
       <div class="login-input">
-        <p>Your password:</p>
-        <input type="password" required name="password" placeholder="e.g jhon1234">
+        <p>Password</p>
+        <input type="password" required name="password" placeholder="e.g 1234">
       </div>
 
       <input type="submit" class="login-submit" value="Login">

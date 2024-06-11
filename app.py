@@ -1,8 +1,10 @@
 import os
 from flask import Flask
 from flask_migrate import Migrate
-from model.models import db
-from blueprints import login, actuator, sensor, user, log, home
+from model.models import db, LogActuator, LogHumidity, LogTemperature, LogVibration
+from blueprints import kits, login, actuator, sensor, user, log, home
+from werkzeug.security import generate_password_hash
+from datetime import date
 
 
 app = Flask(__name__, template_folder="view")
@@ -16,9 +18,10 @@ with app.app_context():
 
     app.register_blueprint(login.login, url_prefix="")
     app.register_blueprint(login.logout, url_prefix="")
-    app.register_blueprint(home.home, url_prefix="")
+    app.register_blueprint(kits.kits, url_prefix="")
     app.register_blueprint(actuator.actuator, url_prefix="")
     app.register_blueprint(sensor.sensor, url_prefix="")
     app.register_blueprint(user.user, url_prefix="")
     app.register_blueprint(log.log, url_prefix="")
+    app.register_blueprint(home.home, url_prefix="")
 app.run(port=8080, debug=True)

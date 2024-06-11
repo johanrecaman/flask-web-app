@@ -2,143 +2,76 @@
     --gray: #1f2937;
     --light-gray: #e2e8f0;
     --medium-gray: #374151;
-  
+
+    --blue: #3b82f6;
+    --light-blue: #3F8CFF;
+    --azure: #eff4f8;
+    --black: #000000;
     font-family: "Roboto", sans-serif;
 }
-
-h2{
-    margin: 0;
-    font-size: 1.8rem;
-    color: var(--medium-gray);
+sensor-label, .sensor-input{
+        width: 70%;
 }
-
-
-
-.main{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 35%;
-    height: 35%;
-    gap: 1rem;
-}
-
-.sensor-create-container,
-.sensor-view-container{
-    display: flex;
-    width: 100%;
-    min-height: 100%;
-    padding: 3rem;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    border-radius: 1rem;
-    border: 0.1rem solid var(--medium-gray);
-}
-
-.sensor-create-container{
-    justify-content: center;
-    gap: 0.2rem;
-}
-
-.sensor-label, .sensor-input{
-    width: 70%;
-}
-
 .sensor-input{
-    padding: 0.7rem;
-    border: 0.1rem solid var(--medium-gray);
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
+        padding: 0.7rem;
+        border: none;
+        background-color: var(--web-gray);
+        border-radius: 0.5rem;
+        font-size: 1.2rem;
+}
+
+.sensor-input:focus{
+        outline-color: var(--light-blue);
 }
 
 .sensor-button{
-    padding: 1rem;
-    width: 50%;
-    background-color: var(--gray);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
+        padding: 1rem;
+        width: 50%;
+        background-color: var(--blue);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1.2rem;
 }
 .sensor-button:hover{
-    background-color: var(--medium-gray);
-    cursor: pointer;
-}
-
-.sensor-view-container{
-    justify-content: top;
-    overflow: auto;
-    height: 100%;
-    padding: 3rem;
+        background-color: var(--light-blue);
+        cursor: pointer;
 }
 
 .sensor-table{
-    width: 100%;
+        width: 100%;
+}
+
+.sensor-table tr{
+        border-bottom: 0.0625rem solid var(--border-gray);
 }
 
 .sensor-table-header{
-    justify-content: space-between;
-    background-color: var(--gray);
-    color: white;
-    width: 100%;
-    padding: 0.5rem;
-    text-align: center;
+        justify-content: space-between;
+        background-color: white;
+        color: white;
+        width: 100%;
+        padding: 0.5rem;
+        text-align: center;
+        color: var(--black);
 }
 
 .sensor-table-data{
-    padding: 0.5rem;
-    border-bottom: 0.1rem solid var(--medium-gray);
-    text-align: center;
+        padding: 0.5rem;
+        text-align: center;
 }
 
-.sensor-table-data:nth-child(odd){
-    background-color: white;
-}
+
 
 .sensor-table-data:last-child{
-    border-bottom: none;
+        border-bottom: none;
 }
 
 .sensor-delete-button{
-    background-color: var(--gray);
-    color: white;
-    border: none;
-    padding: 0.7rem;
-    border-radius: 0.5rem;
+        background-color: var(--blue);
+        color: white;
+        border: none;
+        padding: 0.7rem;
+        border-radius: 0.5rem;
 }
 
-.sensor-delete-button:hover{
-    background-color: var(--medium-gray);
-    cursor: pointer;
-}
-
-::-webkit-scrollbar {
-    width: 12px; 
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--light-gray);
-    border-radius: 10px; 
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--gray);
-    border-radius: 10px; 
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--medium-gray);
-  }
-  
-  

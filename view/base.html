@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/sensor.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/actuator.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
-    <title>{%block title%}{%endblock%}</title>
-  </head>
-  <body>
-    <header>          
-      <div class='base-menu'>
-        <img src="{{url_for('static', filename='img/logo.svg')}}" class="logo" >
-        <a href="/" class="base-menu-option">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/kits.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sensor.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/actuator.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
+  <title>{%block title%}{%endblock%}</title>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <p>QuietQuake</p>
+    </div>
+    <div class="side-menu">
+        <div class="up-header">
+          <a href="/" class="base-menu-option">
             <img src="{{url_for('static', filename='img/home.svg')}}">
             <p>Home</p>
-        </a>
-        <a href="/sensor" class="base-menu-option">
-            <img src="{{url_for('static', filename='img/sensor.svg')}}">
-            <p>Sensors</p>
-        </a>
-        <a href="/actuator" class="base-menu-option">
-            <img src="{{url_for('static', filename='img/actuator.svg')}}">
-            <p>Actuators</p>
-        </a>
-        <a href="/log" class="base-menu-option">
-            <img src="{{url_for('static', filename='img/sensor.svg')}}">
+          </a>
+          <a href="/kits" class="base-menu-option">
+            <img src="{{url_for('static', filename='img/dashboard.svg')}}">
+            <p>Dashboard</p>
+          </a> 
+          <a href="/log" class="base-menu-option">
+            <img src="{{url_for('static', filename='img/history.svg')}}">
             <p>Logs</p>
-        </a>
+          </a>
         {% if session.get('role') == 'admin' %}
         <a href="/user" class="base-menu-option">
-            <img src="{{url_for('static', filename='img/user.svg')}}">
-            <p>Users</p>
+          <img src="{{url_for('static', filename='img/user.svg')}}">
+          <p>Users</p>
         </a>
         {% endif %}
-      </div>
-      <div class='base-login'>
-          {% if session.get('user')%}
+        </div>
+        <div class="bottom-header">
+          {%if not session.get('user')%}
+            <a href="/login" class="base-menu-option">
+              <img src="{{url_for('static', filename='img/login.svg')}}">
+              <p>Log in</p>
+            </a>
+          {%endif%}
+          <div class='base-login'>
+            {% if session.get('user')%}
             <a href="/logout" class="base-menu-option">
               <img src="{{url_for('static', filename='img/logout.svg')}}">
               <p>Log out</p>
@@ -49,18 +56,16 @@
               <img src="{{url_for('static', filename='img/login.svg')}}">
               <p>{{ session.get('user') }}</p>
             </a>
-          {%else%}
-            <a href="/login" class="base-menu-option">
-              <p>Log in</p>
-            </a>
-          {% endif %}
-      </div>
-    </header>
-    <main>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  </header>
+  <main>
+    <div class="block-content">
       {%block content%}
       {%endblock%}
-    </main>
-    <footer>
-    </footer>
-  </body>
+    </div>
+  </main>
+</body>
 </html>

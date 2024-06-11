@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}
+Home Page
+{% endblock %}
+{% block content %}
+<div class="title-container">
+  <span id="super-title">Dashboard</span>
+</div>
+<div class="home-container">
+  <div class="home-module">
+    <div class="module-container">
+      {% if is_admin or is_statistician%}
+      <div class="home-sensors">
+        <div class="home-sensor-container first-element">
+            <img src="{{url_for('static', filename='img/temp.svg')}}">
+            <p id="temperature">{{ values.Temperature or 'Temperature: Not found.' }}</p>
+        </div>     
+        <div class="home-sensor-container first-element">
+            <img src="{{url_for('static', filename='img/humidity.svg')}}">
+            <p id="humidity">{{ values.Humidity or 'Humidity: Not found.' }}</p>
+        </div>     
+        <div class="home-sensor-container">
+            <img src="{{url_for('static', filename='img/vibrate.svg')}}">
+            <p id="humidity">{{ values.Vibration or 'Vibration: Not found.' }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="module-container">
+      {% if is_admin or is_operator %}
+        <form method="POST" class="home-form">
+          <p>Input your command</p>
+          <input class="home-input" type="text" name="command" placeholder=" e.g turn on light">
+          <input type="submit" class="home-button">
+        </form>
+      {% endif %}
+    </div>
+  </div>
+  <div class="home-module">
+    <div class="module-container">
+        <form action="/create_kit" method="post" class="kit-create-container">
+
+          <label for="name" class="sensor-label">Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g temperature" required class="sensor-input"><br>
+          
+          <label for="value" class="sensor-label">Value</label>
+          <input type="number" id="value" name="value" placeholder="25" required class="sensor-input"><br>
+          
+          <div class="type-checkbox">
+            <input type="checkbox" id="sensor" name="type" value="Sensor">
+            <label for="sensor">Sensor</label><br>
+            <input type="checkbox" id="actuator" name="type" value="Actuator">
+            <label for="actuator">Actuator</label>
+          </div>
+
+            <button type="submit" class="sensor-button">Register</button>
+        </form>
+    </div>
+    <div class="module-container">
+      <div class="view-container">
+        <table class="sensor-table">
+          <tr>
+            <th class="sensor-table-header left">Name</th>
+            <th class="sensor-table-header">Value</th>
+            <th class="sensor-table-header">Type</th>
+            <th class="sensor-table-header">Action</th>
+          </tr>
+          {%if is_operator or is_admin%}
+          {% for actuator in actuators %}
+          <tr>
+            <td class="sensor-table-data left">{{ actuator.name }}</td>
+            <td class="sensor-table-data">{{ actuator.value }}</td>
+            <td class = "sensor-table-data">{{ actuator.type }}</td>
+            <td class="sensor-table-data">
+                {% if session.get('role') == "admin" %}
+                <form action="/delete_actuator/{{actuator.id}}" method="POST">
+                  <button type="submit" class="sensor-delete-button">Delete</button>
+                </form>
+                {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+          {%endif%}
+
+          {%if is_statistician or is_admin%}
+          {% for sensor in sensors %}
+          <tr>
+            <td class="sensor-table-data left">{{ sensor.name }}</td>
+            <td class="sensor-table-data">{{ sensor.value }}</td>
+            <td class="sensor-table-data">{{ sensor.type }}</td>
+            <td class="sensor-table-data">
+                {% if session.get('role') == "admin" %}
+                <form action="/delete_sensor/{{sensor.id}}" method="POST">
+                  <button type="submit" class="sensor-delete-button">Delete</button>
+                </form>
+                {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+          {%endif%}
+        </table>
+        </div>
+  </div>
+    </div>
+  </div>
+{% endblock %}
+
