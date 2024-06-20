@@ -12,7 +12,7 @@ from blueprints.user import is_admin, is_statistician, is_operator
 
 kits = Blueprint("kits", __name__, static_folder="static", template_folder="view")
 
-values = {"Temperature": None, "Humidity": None, "Vibration": None}
+values = {"Temperature": "", "Humidity": "", "Vibration": ""}
 messages = []
 
 def on_message(client, userdata, message):
